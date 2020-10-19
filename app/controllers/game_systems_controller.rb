@@ -1,0 +1,2 @@
+class GameSystemsController < ApplicationController
+end
