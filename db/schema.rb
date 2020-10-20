@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_142017) do
+ActiveRecord::Schema.define(version: 2020_10_20_172651) do
 
   create_table "game_systems", force: :cascade do |t|
     t.integer "game_id"
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(version: 2020_10_20_142017) do
     t.text "interest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "email"
+    t.string "username"
   end
 
 end

@@ -25,8 +25,6 @@ data["results"].each do |system|
 end
 
 # game seeds
-Game.destroy_all
-GameSystem.destroy_all
 
 url = "https://api.rawg.io/api/games?page=1"
 response = RestClient.get(url)
