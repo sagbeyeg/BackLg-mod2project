@@ -1,0 +1,5 @@
+<h1>Systems</h1>
+
+<% @systems.each do |s| %>
+  <p><%= link_to s.name, system_path(s) %></p>
+<% end %>
