@@ -5,4 +5,6 @@ class User < ApplicationRecord
     has_many :systems, through: :system_users
     validates :name, uniqueness: true
     validates :name, :age, presence: true
+
+    has_secure_password
 end
