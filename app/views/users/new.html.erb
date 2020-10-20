@@ -1,0 +1,9 @@
+<h1>Create Profile</h1>
+
+<%if flash[:my_errors]%>
+    <%flash[:my_errors].each do |error|%>
+        <p><%=error%></p>
+    <%end%>
+<%end%>
+
+<%=render 'form'%>
