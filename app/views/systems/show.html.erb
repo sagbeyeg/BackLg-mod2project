@@ -1,0 +1,7 @@
+<h2><%= @system.name %></h2>
+
+<h3>System Games</h3>
+
+<% @system.games.each do |g| %>
+  <p><%= link_to g.name, game_path(g) %></p>
+<% end %>
