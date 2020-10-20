@@ -1,18 +1,25 @@
-<h1><%= @user.name%></h1>
-
-<ul>
-    <li><%="Age: #{@user.age}"%></li>
-    <li><%="Interests: #{@user.interest}"%></li>
-    <ul>Systems:
-        <% @user.systems.each do |sys|%>
-            <li><%= sys.name %></li>
-        <% end%>
-    </ul>
-</ul>
-
-
-
+<h1><%= "#{@user.name}'s Games"%></h1>
 
 <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
-<%=button_to "Delete Account", user_path(@user), method: :delete%>
+
+<h3>My Games:</h3>
+<ul>
+    <% @user.games.sort.each do |game|%>
+        <li><%= game.name%></li>
+    <% end%>
+</ul>
+
+<h3>My Systems:</h3>
+<ul>
+    <% @user.systems.each do |sys|%>
+        <li><%= sys.name %></li>
+    <% end%>
+</ul>
 <%=button_to "Add System", new_system_user_path, method: :get%>
+
+<h3>My Reviews:</h3>
+<ul>
+    <% @user.reviews.each do |review|%>
+        <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
+    <%end%>
+</ul>

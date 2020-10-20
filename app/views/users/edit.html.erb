@@ -1,3 +1,10 @@
-<h1>Edit Profile<h1>
+<h1>Edit Profile</h1>
 
 <%=render 'form'%>
+
+<%=button_to "Back to My Games", user_path(@user), method: :get%>
+<br>
+<br>
+<br>
+<br>
+<%=button_to "Delete Account", user_path(@user), method: :delete%>

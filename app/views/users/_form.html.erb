@@ -1,21 +1,21 @@
 <%= form_for @user do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br>
 
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username %><br>
 
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email %><br>
 
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.text_field :password %><br>
 
     <%= f.label :age %>
-    <%= f.number_field :age %>
+    <%= f.number_field :age %><br>
 
     <%= f.label :interest %>
-    <%= f.text_area :interest %>
+    <%= f.text_area :interest %><br>
 
     <%=f.submit%>
 <% end%>
