@@ -7,10 +7,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user if current_user
+    @review.user_id = current_user.id if current_user 
     if @review.valid
-      # flash[:success] = "Your review for #{@review.game.name} has been created"
-      # redirect_to 
+      # redirect_to #user_path(@review.user)
     else
       flash[:error] = "Please try again, information is incomplete"
       redirect_to 'new'
@@ -37,6 +36,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:user_id, :game_id, :rating, :description, :title)
+    params.require(:review).permit(:game_id, :rating, :description, :title)
   end
 end
