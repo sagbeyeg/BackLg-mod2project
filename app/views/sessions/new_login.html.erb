@@ -1,7 +1,23 @@
-<h1>User Login</h1>
+<h1>Welcome to B@ckLg</h1>
 
-<% if flash[:error] %>
+<h3>User Login</h3>
+
+<%
+=begin%>
+ <% if flash[:error] %>
   <p><%= flash[:error] %></p>
+<% end %>
+
+<% if flash[:not_authorized] %>
+  <p><%= flash[:not_authorized] %></p>
+<% end %> 
+<%
+=end%>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
 <% end %>
 
 <%= form_for :session do |f| %>

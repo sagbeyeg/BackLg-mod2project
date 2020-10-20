@@ -10,6 +10,24 @@
   </head>
 
   <body>
+
+  <ul class="nav">
+      <li><a href="<%= games_path %>">All Games</a></li>
+      <%
+=begin%>
+ <li><a href="<%= list_path(@current_user.) %>">My Games</a></li> 
+<%
+=end%>
+
+      <% if @current_user %>
+        <li><a href="<%= user_path(@current_user) %>">Profile</a></li>
+        <li class="right">Welcome <%= @current_user.name %>!</li>
+        <li class="right"><%= link_to "Log Out", logout_path, method: :delete %></li>
+      <% else %>
+        <li class="right"><a href="<%= new_user_path %>">Sign Up!</a></li>
+        <li class="right"><a href="<%= new_login_path %>">Login!</a></li>
+      <% end %>
+    </ul>
     <%= yield %>
   </body>
 </html>

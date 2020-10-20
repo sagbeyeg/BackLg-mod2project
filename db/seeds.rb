@@ -47,8 +47,8 @@ end
 
 
 #user seeds
-sisan = User.create(name: "Sisan", age: 21, interest: "Horror and Adventure games")
-reid = User.create(name: "Reid", age: 26, interest: "Fantasy and Strategy games")
-bill = User.create(name: "Bill", age: 31, interest: "pokemon")
-greg = User.create(name: "Greg", age: 31, interest: "codin'")
-caryn = User.create(name: "Caryn", age: 26, interest: "cats")
+sisan = User.create(name: "Sisan", email: "s@s.com", username:"sisan", password: "pass123", age: 21, interest: "Horror and Adventure games")
+reid = User.create(name: "Reid", email:"r@r.com", username:"reid", password:"pass1234", age: 26, interest: "Fantasy and Strategy games")
+bill = User.create(name: "Bill", email:"b@b.com", username:"bill", password:"pass1235", age: 31, interest: "pokemon")
+greg = User.create(name: "Greg", email:"g@g.com", username:"greg", password:"pass1236", age: 31, interest: "codin'")
+caryn = User.create(name: "Caryn", email:"c@c.com", username:"caryn", password:"pass1237", age: 26, interest: "cats")

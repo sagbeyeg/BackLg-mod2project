@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
-  # skip_before_action :authorized?, only: [:new_login, :login]
+  skip_before_action :authorized?, only: [:new_login, :login]
 
   def logout 
     session.delete(:user_id)
     
-    redirect_back fallback_location: #insert home page
+    redirect_back fallback_location: games_path
   end 
 
   def new_login

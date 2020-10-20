@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#logout', as: 'logout'
   
-  get '/login', to: 'sessions#new_login', as: 'new_login'
+  root to: 'sessions#new_login', as: 'new_login'
 
-  post '/login', to: 'sessions#login'
+  post '/', to: 'sessions#login'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

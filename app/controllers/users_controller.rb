@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
-    # skip_before_action :authorized?, only: [:new, :create]
+    skip_before_action :authorized?, only: [:new, :create]
 
     def index
         @users = User.all
     end
 
     def show
-        if @current_user !== @user
+        if @current_user != @user
             # redirect_to #somewhere
         end
     end
