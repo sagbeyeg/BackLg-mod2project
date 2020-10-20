@@ -5,7 +5,10 @@ class SystemUsersController < ApplicationController
     end
     
     def create
-        @system = SystemUser.create(su_params)
+        @system = SystemUser.new(su_params)
+        @system.user_id = @current_user.id if @current_user 
+        @system.save
+
         redirect_to user_path(@system.user)
     end
 

@@ -2,11 +2,9 @@
 
 
 <%= form_for @system_user do |f| %>
-    <%= f.label "Select your account:"%>
-    <%= f.collection_select  :user_id, User.all, :id, :name %><br>
 
     <%= f.label "Add a system: " %><br>
-    <%= f.collection_check_boxes :system_id, System.all, :id, :name, {:multiple => true} %><br>
+    <%= f.collection_select :system_id, System.all, :id, :name, {:multiple => true} %><br>
 
     <%= f.submit %>
 <% end %>

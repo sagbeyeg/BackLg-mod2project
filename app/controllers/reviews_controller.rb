@@ -7,9 +7,10 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id if current_user 
-    if @review.valid
-      # redirect_to #user_path(@review.user)
+    @review.user_id = @current_user.id if @current_user 
+    @review.save
+    if @review.valid?
+      redirect_to user_path(@review.user)
     else
       flash[:error] = "Please try again, information is incomplete"
       redirect_to 'new'

@@ -3,8 +3,16 @@
 <ul>
     <li><%="Age: #{@user.age}"%></li>
     <li><%="Interests: #{@user.interest}"%></li>
+    <ul>Systems:
+        <% @user.systems.each do |sys|%>
+            <li><%= sys.name %></li>
+        <% end%>
+    </ul>
 </ul>
+
+
 
 
 <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
 <%=button_to "Delete Account", user_path(@user), method: :delete%>
+<%=button_to "Add System", new_system_user_path, method: :get%>
