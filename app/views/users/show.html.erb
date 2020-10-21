@@ -7,7 +7,10 @@
     <% @user.games.sort.each do |game|%>
         <div class="game">
             <%= image_tag "#{game.image_url}" %>
-            <%= game.name%>
+            <div class="text">
+                <p><%= game.name%></p>
+                <b>Rating: </b><%= game.rating %>
+            </div>
         </div>
         
     <% end%>
