@@ -4,16 +4,20 @@
 
 <h3>My Games:</h3>
 
-    <% @user.games.sort.each do |game|%>
-        <div class="container">
-            <%= image_tag "#{game.image_url}" %>
-            <div class="text">
-                <p><%= link_to "#{game.name}", game_path(game)%></p>
-                <b>Rating: </b><%= game.rating %>
+    
+<div class="container my-4">
+  <div class="row">
+    <% @user.games.each do |game|%>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <%= image_tag  "#{game.image_url}" %>
+                <%=link_to  "#{game.name}", game_path(game) %>
+                <p>Rating: <%= game.rating %></p>
             </div>
-        </div>
+    <% end %>
+  </div>
+</div>
         
-    <% end%>
+   
 
 <%=button_to "Add Game", new_review_path, method: :get%>
 
@@ -44,3 +48,7 @@
         </li>
     </ul>
 <%end%>
+
+<%= form_tag( 'path' , remote: true) do |f| %>
+    <%= <%= hidden_field_tag (:id_name, "value") %> %>
+<% end %>
