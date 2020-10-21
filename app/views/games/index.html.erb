@@ -9,13 +9,10 @@
 <% end %>
 
 <% @games.each do |game|%>
-    <div class="container">
         <div class="thumbnail">
             <%= image_tag  "#{game.image_url}" %>
             <%=link_to  "#{game.name}", game_path(game) %>
         </div>
-
-    </div>
 <% end %>
 
 

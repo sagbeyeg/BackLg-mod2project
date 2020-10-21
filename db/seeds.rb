@@ -26,7 +26,7 @@ end
 
 # game seeds
 
-url = "https://api.rawg.io/api/games?page=1"
+url = "https://api.rawg.io/api/games?page-1"
 response = RestClient.get(url)
 data = JSON.parse(response)
 
