@@ -1,4 +1,9 @@
 <h1>Games</h1>
+<%if flash[:errors]%>
+    <%flash[:errors].each do |error|%>
+        <p><%=error%></p>
+    <%end%>
+<%end%>
 
 <%= form_tag(games_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Games" %>

@@ -10,13 +10,13 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = @current_user.id if @current_user 
+    @review.user_id = @current_user.id if @current_user
     @review.save
     if @review.valid?
       redirect_to user_path(@review.user)
     else
       flash[:errors] = @review.errors.full_messages
-      redirect_to new_review_path
+      redirect_to games_path
     end
   end
 
@@ -40,6 +40,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:game_id, :rating, :description, :title)
+    params.permit(:game_id, :title).merge(rating: 0, description: ".")
   end
 end
