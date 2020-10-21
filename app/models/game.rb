@@ -4,4 +4,5 @@ class Game < ApplicationRecord
     has_many :users, through: :reviews
     has_many :game_systems
     has_many :systems, through: :game_systems
+
 end

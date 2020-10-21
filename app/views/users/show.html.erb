@@ -8,6 +8,7 @@
         <li><%= game.name%></li>
     <% end%>
 </ul>
+<%=button_to "Add Game", new_review_path, method: :get%>
 
 <h3>My Systems:</h3>
 <ul>
@@ -23,3 +24,16 @@
         <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
     <%end%>
 </ul>
+
+<h3>System Lists:</h3>
+<%@user.game_lists.each do |system, list|%>
+    <ul>
+        <li><%="#{system} Games:"%>
+            <ul>
+                <%list.each do |game|%>
+                    <li><%=game%></li>
+                <%end%>
+            </ul>
+        </li>
+    </ul>
+<%end%>
