@@ -1,5 +1,12 @@
 <h1>Games</h1>
 
+<%= form_tag(games_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Games" %>
+    <%= submit_tag "Search" %>
+        <%# if @games.present? %>
+            <%# render @games %>
+        <%# end %>
+<% end %>
 
 <% @games.each do |game|%>
     <div class="container">
