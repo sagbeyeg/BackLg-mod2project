@@ -1,10 +1,11 @@
 <h1>Select your Platforms</h1>
 
+<div class="form">
+    <%= form_for @system_user do |f| %>
 
-<%= form_for @system_user do |f| %>
+        <%= f.label "Add a system: " %><br>
+        <%= f.collection_select :system_id, System.all, :id, :name, {:multiple => true} %><br>
 
-    <%= f.label "Add a system: " %><br>
-    <%= f.collection_select :system_id, System.all, :id, :name, {:multiple => true} %><br>
-
-    <%= f.submit %>
-<% end %>
+        <%= f.submit %>
+    <% end %>
+</div>

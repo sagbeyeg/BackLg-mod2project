@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     if @review.valid?
       redirect_to user_path(@review.user)
     else
-      flash[:error] = "Please try again, information is incomplete"
+      flash[:error] = @user.errors.full_messages
       redirect_to 'new'
     end
   end

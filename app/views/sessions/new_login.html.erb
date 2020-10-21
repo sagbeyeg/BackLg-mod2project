@@ -1,31 +1,21 @@
-<h1>Welcome to B@ckLg</h1>
+<h1>Welcome Back! We've missed you!</h1>
 
-<h3>User Login</h3>
-
-<%
-=begin%>
- <% if flash[:error] %>
-  <p><%= flash[:error] %></p>
-<% end %>
-
-<% if flash[:not_authorized] %>
-  <p><%= flash[:not_authorized] %></p>
-<% end %> 
-<%
-=end%>
-
+<h3>
 <% flash.each do |type, msg| %>
   <div>
     <%= msg %>
   </div>
 <% end %>
+</h3>
 
-<%= form_for :session do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+<div class="form">
+  <%= form_for :session do |f| %>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %><br><br>
 
-  <%= f.label :password %>
-  <%= f.text_field :password %>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %><br><br>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit "Login"%>
+  <% end %>
+</div>

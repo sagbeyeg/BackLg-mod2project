@@ -3,23 +3,24 @@
         <p><%=error%></p>
     <%end%>
 <%end%>
+<div class="form">
+  <%= form_for @review do |f| %>
+    <p>
+      For: <%= f.collection_select :game_id, Game.all, :id, :name %>
+    </p>
 
-<%= form_for @review do |f| %>
-  <p>
-    For: <%= f.collection_select :game_id, Game.all, :id, :name %>
-  </p>
+    <p>
+      Rating: <%= f.number_field :rating %>
+    </p>
 
-  <p>
-    Rating: <%= f.number_field :rating %>
-  </p>
+    <p>
+      Title: <%= f.text_field :title %>
+    </p>
 
-  <p>
-    Title: <%= f.text_field :title %>
-  </p>
+    <p>
+      Description: <%= f.text_area :description %>
+    </p>
 
-  <p>
-    Description: <%= f.text_area :description %>
-  </p>
-
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</div>
