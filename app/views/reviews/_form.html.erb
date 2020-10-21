@@ -6,9 +6,10 @@
 <div class="form">
   <%= form_for @review do |f| %>
     <p>
-      For: <%= f.collection_select :game_id, Game.all, :id, :name %>
+      For: <%= @review.game.name %>
     </p>
-
+    <%=f.hidden_field :game_id, :value => @review.game_id%>
+    <%=f.hidden_field :user_id, :value => session[:user_id]%>
     <p>
       Rating: <%= f.number_field :rating %>
     </p>

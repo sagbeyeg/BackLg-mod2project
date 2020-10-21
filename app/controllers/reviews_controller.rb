@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(review_params_new)
     @review.user_id = @current_user.id if @current_user
     @review.save
     if @review.valid?
@@ -24,11 +24,11 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.user_id = current_user if current_user
-    if @review.update(review_params)
-      # redirect_to 
+    @review.update(review_params_edit)
+    if @review.valid?
+      redirect_to user_path(@review.user)
     else 
-      flash[:error] = "Please try again, something went wrong"
+      flash[:errors] = @review.errors.full_messages
       redirect_to edit_review_path(@review)
     end
   end
@@ -39,7 +39,12 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  def review_params
-    params.permit(:game_id, :title).merge(rating: 0, description: ".")
+  def review_params_new
+    params.permit(:game_id).merge(rating: 0)
   end
+
+  def review_params_edit
+    params.require(:review).permit(:user_id, :game_id, :title, :description, :rating)
+  end
+
 end
