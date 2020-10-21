@@ -6,11 +6,3 @@ body {
   background-image: url(@game.image_url);
 }
 
-.container {
-  text-align: center;
-  margin: 30px;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 2fr 2fr;
-
-}
