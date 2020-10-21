@@ -5,10 +5,10 @@
 <h3>My Games:</h3>
 
     <% @user.games.sort.each do |game|%>
-        <div class="game">
+        <div class="container">
             <%= image_tag "#{game.image_url}" %>
             <div class="text">
-                <p><%= game.name%></p>
+                <p><%= link_to "#{game.name}", game_path(game)%></p>
                 <b>Rating: </b><%= game.rating %>
             </div>
         </div>
