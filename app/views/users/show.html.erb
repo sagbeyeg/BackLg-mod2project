@@ -3,11 +3,15 @@
 <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
 
 <h3>My Games:</h3>
-<ul>
+
     <% @user.games.sort.each do |game|%>
-        <li><%= game.name%></li>
+        <div class="game">
+            <%= image_tag "#{game.image_url}" %>
+            <%= game.name%>
+        </div>
+        
     <% end%>
-</ul>
+
 <%=button_to "Add Game", new_review_path, method: :get%>
 
 <h3>My Systems:</h3>

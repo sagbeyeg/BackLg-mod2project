@@ -2,44 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.banner-img {
-    width: 100%;
-   }
-  
-   .banner {
-     width: 85%;
-     margin: 0px auto;
-  
-   }
-  
-   .nav {
-    background-color: #F3CA4F;
-    height: 40px;
-    width: 85%;
-    margin: 0px auto;
-  }
-  
-   .nav li {
-     /* border: 1px solid black; */
-     display: inline-block;
-     line-height: 40px;
-     padding: 0px 15px;
-     margin: 0px;
-  
-   }
-  
-   .nav li:hover {
-     background-color: whitesmoke;
-     transition: 1s;
-   }
-  
-   .nav li a {
-    text-decoration: none;
-    color: #274d9e;
-    font-weight: 800;
-  }
-  
-  
-  .right {
-    float: right;
-  }
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.game {
+    height:80px;
+    width:100px;
+    padding: 15px;
+    vertical-align: bottom;
+   display: table-cell;
+}
