@@ -4,3 +4,5 @@
     <p>ESRB Rating: <%= @game.esrb_rating %></p>
     <p><% @game.rating_count %></p>
     <p><%= image_tag  @game.image_url %></p>
+
+    <%= button_to "Add Game", new_review_path, method: :get %>

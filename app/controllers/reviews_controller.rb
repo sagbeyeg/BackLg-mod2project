@@ -15,8 +15,8 @@ class ReviewsController < ApplicationController
     if @review.valid?
       redirect_to user_path(@review.user)
     else
-      flash[:error] = @user.errors.full_messages
-      redirect_to 'new'
+      flash[:errors] = @review.errors.full_messages
+      redirect_to new_review_path
     end
   end
 
