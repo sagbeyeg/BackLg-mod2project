@@ -8,6 +8,11 @@
     <p>
       For: <%= @review.game.name %>
     </p>
+
+    <p>
+      Completion Status:<%= f.select :completion_status, options_for_select(["Want", "Playing", "Completed", "Abandoned"], @review.completion_status) %>
+    </p>
+
     <%=f.hidden_field :game_id, :value => @review.game_id%>
     <%=f.hidden_field :user_id, :value => session[:user_id]%>
     <p>
