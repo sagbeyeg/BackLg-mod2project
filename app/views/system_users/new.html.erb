@@ -6,12 +6,11 @@
         <p class="text-danger"><%=flash[:errors]%></p>
     <%end%>
     <%= form_for @system_user do |f| %>
-        <%= f.collection_select :system_id, System.all, :id, :name %><br>
 
         <%= f.label "Add a system: " %><br>
         <%= f.collection_select :system_id, System.all, :id, :name, {:multiple => true} %><br>
 
-        <%= f.submit "Add system(s)" %>
+        <%= f.submit "Add system" %>
     <% end %>
 </div>
 
