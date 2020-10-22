@@ -14,7 +14,9 @@ GameSystem.destroy_all
 System.destroy_all
 SystemUser.destroy_all
 
-url = "https://api.rawg.io/api/platforms"
+key = ENV["rawg_key"]
+
+url = "https://api.rawg.io/api/platforms?key=#{key}"
 response = RestClient.get(url)
 data = JSON.parse(response)
 
@@ -26,7 +28,7 @@ end
 
 # game seeds
 
-url = "https://api.rawg.io/api/games?page-1"
+url = "https://api.rawg.io/api/games?key=#{key}&page-1"
 response = RestClient.get(url)
 data = JSON.parse(response)
 
