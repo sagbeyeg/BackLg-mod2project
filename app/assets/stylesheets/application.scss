@@ -23,6 +23,11 @@
   } */
 
   /* Styling for app form text field*/
+  #logo {
+    height: 70px;
+    width: 70px;
+  }
+  
   input {
     width: 100%;
     padding: 12px 20px;
@@ -88,6 +93,10 @@
     height: 40px;
     width: 90%;
     margin: 0px auto;
+  }
+
+  #home_page {
+    background-color: #724caf
   }
   
    .nav li {
