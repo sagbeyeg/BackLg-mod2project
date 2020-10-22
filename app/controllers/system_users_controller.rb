@@ -5,11 +5,17 @@ class SystemUsersController < ApplicationController
     end
     
     def create
+        
         @system = SystemUser.new(su_params)
         @system.user_id = @current_user.id if @current_user 
-        @system.save
-
-        redirect_to user_path(@system.user)
+        
+        if @system.valid?
+            @system.save
+            redirect_to user_path(@system.user)
+        else
+            flash[:errors] = "System already added"
+            redirect_to new_system_user_path
+        end
     end
 
     def edit

@@ -298,6 +298,7 @@ DEPENDENCIES
   jquery-rails
   json
   listen (~> 3.2)
+  popper_js
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)

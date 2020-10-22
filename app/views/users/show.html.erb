@@ -18,21 +18,8 @@
     </div>
     </div>
             
-    
+<h3>My Systems:</h3>
 
-    <%=button_to "Add Game", games_path, method: :get%>
-
-    <h3>My Systems:</h3>
-    <%
-=begin%>
- <ul>
-        <% @user.systems.each do |sys|%>
-            <li><%= image_tag  sys.image_url %></li>
-            <li><%= sys.name %></li>
-        <% end%>
-    </ul> 
-<%
-=end%>
 <div class="container my-4">
     <div class="row">
         <% @user.systems.each do |sys|%>
@@ -47,15 +34,6 @@
         <% end%>
     </div>
 </div>
-
-
-
-
-
-<%=button_to "Add System", new_system_user_path, method: :get%>
-
-
-
 
     <h3>My Reviews:</h3>
     <ul>
