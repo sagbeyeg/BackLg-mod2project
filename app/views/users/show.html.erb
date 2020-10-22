@@ -5,7 +5,6 @@
         <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Profile"%></h1>
     </div>
 
-<<<<<<< HEAD
 
     <div class="show-form">
         <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
@@ -15,16 +14,6 @@
             <%= submit_tag "Filter"%><br>
             <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
         <% end %>
-=======
-    <div class="form">
-    <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
-        <% game_lists = @user.game_lists.map{|list,games| list}%>
-        <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%>
-        <%= hidden_field_tag "id", @user.id%>
-        <%= submit_tag "Filter"%>
-    <% end %>
-    <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
->>>>>>> billy-cleanup
     </div>
 
 
@@ -40,16 +29,11 @@
             <% @user_games.each do |game|%>
                     <div class="col-lg-4 col-md-12 mb-4">
                         <%= image_tag  "#{game.image_url}" %>
-<<<<<<< HEAD
                         <div class="text-center">
                             <%=link_to  "#{game.name}", game_path(game) %>
                             <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
+                            <%= button_to "Remove Game", review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :delete%>
                         </div>
-=======
-                        <%=link_to  "#{game.name}", game_path(game) %>
-                        <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
-                        <%= button_to "Remove Game", review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :delete%>
->>>>>>> billy-cleanup
                     </div>
             <% end %>
         </div>
@@ -88,8 +72,4 @@
         <% end %>
     <% end%>
     </div>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> billy-cleanup
