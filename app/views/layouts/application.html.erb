@@ -32,25 +32,19 @@
             <li class="nav-item active">
               <a class="nav-link" href="<%=  %>">Welcome <%= @current_user.name %>! <span class="sr-only">(current)</span></a>
             </li>
-
             <li class="nav-item active">
               <a class="nav-link" href="<%= games_path %>">All Games<span class="sr-only">(current)</span></a>
             </li>
             
-            
-            
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href=<%=user_path(@current_user)%> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href=<%= user_path(@current_user)%>>See your profile</a>
                 <a class="dropdown-item" href=<%= edit_user_path(@current_user.id) %>>Edit profile</a>
                 <a class="dropdown-item" href=<%= games_path %>>Add a Game</a>
                 <a class="dropdown-item" href=<%= new_system_user_path %>>Add a System</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
-            
             
             <li class="nav-item">
               <a class="nav-link" rel="nofollow" data-method="delete" href="/logout">Logout<span class="sr-only">(current)</span></a>
