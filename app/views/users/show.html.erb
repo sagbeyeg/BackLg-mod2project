@@ -23,33 +23,54 @@
     <%=button_to "Add Game", games_path, method: :get%>
 
     <h3>My Systems:</h3>
-    <ul>
+    <%
+=begin%>
+ <ul>
         <% @user.systems.each do |sys|%>
+            <li><%= image_tag  sys.image_url %></li>
             <li><%= sys.name %></li>
         <% end%>
-    </ul>
-    <%=button_to "Add System", new_system_user_path, method: :get%>
+    </ul> 
+<%
+=end%>
+<div class="container my-4">
+    <div class="row">
+        <% @user.systems.each do |sys|%>
+            <div class="col-md-3" style="margin-bottom:15px;">
+                <div id="sys_card"class="card h-100 bg-dark text-white">
+                    <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
+                    <div class="card-img-overlay align-bottom">
+                        <%= link_to  sys.name, system_path(sys) %>
+                    </div>
+                </div>
+            </div>
+        <% end%>
+    </div>
+</div>
+
+
+
+
+
+<%=button_to "Add System", new_system_user_path, method: :get%>
+
+
 
 
     <h3>My Reviews:</h3>
     <ul>
         <% @user.reviews.each do |review|%>
             <% if review.title != nil && review.description != nil%>
-                <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
+                <%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%>
             <% end %>
         <%end%>
     </ul>
 
     <h3>System Lists:</h3>
     <%@user.game_lists.each do |system, list|%>
-        <ul>
-            <li><%="#{system} Games:"%>
-                <ul>
-                    <%list.each do |game|%>
-                        <li><%=game%></li>
-                    <%end%>
-                </ul>
-            </li>
-        </ul>
+        <%="#{system} Games:"%><br>
+            <%list.each do |game|%><br>
+                <%=game%><br>
+            <%end%>
     <%end%>
 </div>

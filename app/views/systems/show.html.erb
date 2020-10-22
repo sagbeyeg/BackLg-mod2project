@@ -1,7 +1,23 @@
-<h2><%= @system.name %></h2>
+<div class="text-center">
+  <h2><%= @system.name %></h2>
 
-<h3>System Games</h3>
+  <h5>Games</h5>
 
-<% @system.games.each do |g| %>
-  <p><%= link_to g.name, game_path(g) %></p>
-<% end %>
+  <div class="container my-4">
+    <div class="row">
+        <% @system.games.each do |game|%>
+            <div class="col-md-3" style="margin-bottom:15px;">
+                <div id="sys_card"class="card h-100 bg-dark text-white">
+                    <img id="sys_pic"class="card-img" src=<%= game.image_url %> alt="Card image">
+                    <div class="card-img-overlay align-bottom">
+                      <a class="text-light"href=<%= game_path(game) %>> <%= game.name %></a>
+                    </div>
+                </div>
+            </div>
+        <% end%>
+    </div>
+</div>
+
+
+
+

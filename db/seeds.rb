@@ -21,7 +21,8 @@ data = JSON.parse(response)
 data["results"].each do |system|
     id = system["id"]
     name = system["name"]
-    System.create(name: name, id: id)
+    image_url = system["image_background"]
+    System.create(name: name, id: id, image_url:image_url)
 end
 
 # game seeds

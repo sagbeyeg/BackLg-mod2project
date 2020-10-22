@@ -17,21 +17,6 @@
     </div>
 
 
- <%
-=begin%>
- <ul class="nav">
-      <li><a href="<%= games_path %>">All Games</a></li>
-      <% if @current_user %>
-        <li><a href="<%= user_path(@current_user) %>">Profile</a></li>
-        <li class="right">Welcome <%= @current_user.name %>!</li>
-        <li class="right"><%= link_to "Log Out", logout_path, method: :delete %></li>
-      <% else %>
-        <li class="right"><a href="<%= new_user_path %>">Sign Up!</a></li>
-        <li class="right"><a href="<%= new_login_path %>">Login!</a></li>
-      <% end %>
-    </ul>  
-<%
-=end%>
 
  <nav id="home_page"class="navbar navbar-expand-lg navbar-dark shadow-sm">
       <a id="logo"class="navbar-brand" href=<%= new_login_path %>>
@@ -54,6 +39,28 @@
             <li class="nav-item active">
               <a class="nav-link" href="<%= user_path(@current_user) %>">Profile <span class="sr-only">(current)</span></a>
             </li>
+
+
+
+
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href=<%= edit_user_path(@current_user.id) %>>Edit Profile</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <li class="nav-item">
               <a class="nav-link" rel="nofollow" data-method="delete" href="/logout">Logout<span class="sr-only">(current)</span></a>
             </li>

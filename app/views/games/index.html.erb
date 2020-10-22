@@ -36,15 +36,15 @@
 <div class="container my-4">
     <div class="row">
         <% @games.each do |game|%>
-            <div class="col-md-4">
-                <div class="card shadow">
+            <div class="col-md-4" style="margin-bottom: 15px; text-align:center;">
+                <div class="card h-100 shadow-lg">
                     <img src= <%= game.image_url %> class="card-img-top">
-                    <div class="card-body">
+                    <div class="card-body bg-dark text-light">
                         <h5 class="text-center" class="card-text"><%= link_to "#{game.name}", game_path(game) %></h5>
                         <br>
-                        <li class="card-text">Rating: <%= game.rating %></li>
-                        <li class="card-text">Genre: <%= game.genre %></li>
-                        <li class="card-text">Number of Ratings: <%= game.rating_count %></li>
+                        <p class="card-text">Rating: <%= game.rating %><p>
+                        <p class="card-text">Genre: <%= game.genre %></p>
+                        <p class="card-text">Number of Ratings: <%= game.rating_count %></p>
                         <br>
                     </div>
                 </div>

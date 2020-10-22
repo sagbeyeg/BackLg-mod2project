@@ -22,6 +22,12 @@ class SystemUsersController < ApplicationController
         redirect_to user_path(@system.user)
     end
 
+    def delete
+        @system_user = SystemUser.find(params[:id])
+        @system_user.destroy
+        redirect_to user_path(@system_user.user)
+    end
+
     private
     def su_params
         params.require(:system_user).permit(:user_id, :system_id)
