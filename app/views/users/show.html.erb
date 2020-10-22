@@ -20,7 +20,7 @@
             
     
 
-    <%=button_to "Add Game", new_review_path, method: :get%>
+    <%=button_to "Add Game", games_path, method: :get%>
 
     <h3>My Systems:</h3>
     <ul>
@@ -34,7 +34,9 @@
     <h3>My Reviews:</h3>
     <ul>
         <% @user.reviews.each do |review|%>
-            <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
+            <% if review.title != nil && review.description != nil%>
+                <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
+            <% end %>
         <%end%>
     </ul>
 
