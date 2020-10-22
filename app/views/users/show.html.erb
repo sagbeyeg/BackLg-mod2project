@@ -5,6 +5,7 @@
         <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Profile"%></h1>
     </div>
 
+<<<<<<< HEAD
 
     <div class="show-form">
         <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
@@ -14,6 +15,16 @@
             <%= submit_tag "Filter"%><br>
             <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
         <% end %>
+=======
+    <div class="form">
+    <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
+        <% game_lists = @user.game_lists.map{|list,games| list}%>
+        <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%>
+        <%= hidden_field_tag "id", @user.id%>
+        <%= submit_tag "Filter"%>
+    <% end %>
+    <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
+>>>>>>> billy-cleanup
     </div>
 
 
@@ -21,7 +32,7 @@
     <h3 class="text-center">My Games</h3>
 
     <%if params[:game_list]%>
-        <p><%= params[:game_list]%> Games</p>
+        <h3><%= params[:game_list]%> Games:</h3>
     <%end%>
 
     <div class="container my-4">
@@ -29,10 +40,16 @@
             <% @user_games.each do |game|%>
                     <div class="col-lg-4 col-md-12 mb-4">
                         <%= image_tag  "#{game.image_url}" %>
+<<<<<<< HEAD
                         <div class="text-center">
                             <%=link_to  "#{game.name}", game_path(game) %>
                             <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
                         </div>
+=======
+                        <%=link_to  "#{game.name}", game_path(game) %>
+                        <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
+                        <%= button_to "Remove Game", review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :delete%>
+>>>>>>> billy-cleanup
                     </div>
             <% end %>
         </div>
@@ -43,13 +60,15 @@
     <div class="container my-4">
         <div class="row">
             <% @user.systems.each do |sys|%>
-                <div class="col-md-3" style="margin-bottom:15px;">
-                    <div id="sys_card"class="card h-100 bg-dark text-white">
+                <div class="col-lg-4 col-md-12 mb-4" style="margin-bottom:15px;">
+                    <div id="sys_card"class="card h-50 bg-dark text-white">
                         <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
                         <div class="card-img-overlay align-bottom">
                             <%= link_to  sys.name, system_path(sys) %>
                         </div>
                     </div>
+                <%= button_to "View All Games", system_path(sys), method: :get%>
+                <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
                 </div>
             <% end%>
         </div>
@@ -69,4 +88,8 @@
         <% end %>
     <% end%>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> billy-cleanup

@@ -28,7 +28,7 @@ class SystemUsersController < ApplicationController
         redirect_to user_path(@system.user)
     end
 
-    def delete
+    def destroy
         @system_user = SystemUser.find(params[:id])
         @system_user.destroy
         redirect_to user_path(@system_user.user)
