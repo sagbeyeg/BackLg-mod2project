@@ -1,53 +1,73 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="<%= root_path %>">Home</a>
+  <a href="<%= edit_user_path %>">Edit Profile</a>
+  <a href="<%= games_path %>">Add Game</a>
+</div>
 
-<div class="text-center">
-    <h1><%= "#{@user.name}'s Games"%></h1>
-    <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
 
-    <h3>My Games:</h3>
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+</script>
 
-        
-    <div class="container my-4">
-    <div class="row">
-        <% @user.games.each do |game|%>
-                <div class="col-lg-4 col-md-12 mb-4">
-                    <%= image_tag  "#{game.image_url}" %>
-                    <%=link_to  "#{game.name}", game_path(game) %>
-                    <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
-                </div>
-        <% end %>
-    </div>
-    </div>
+<div id="main">
+    <div class="text-center">
+        <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Games"%></h1>
+        <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
+
+        <h3>My Games:</h3>
+
             
-    
+        <div class="container my-4">
+        <div class="row">
+            <% @user.games.each do |game|%>
+                    <div class="col-lg-4 col-md-12 mb-4">
+                        <%= image_tag  "#{game.image_url}" %>
+                        <%=link_to  "#{game.name}", game_path(game) %>
+                        <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
+                    </div>
+            <% end %>
+        </div>
+        </div>
+                
+        
 
-    <%=button_to "Add Game", new_review_path, method: :get%>
-
-    <h3>My Systems:</h3>
-    <ul>
-        <% @user.systems.each do |sys|%>
-            <li><%= sys.name %></li>
-        <% end%>
-    </ul>
-    <%=button_to "Add System", new_system_user_path, method: :get%>
-
-
-    <h3>My Reviews:</h3>
-    <ul>
-        <% @user.reviews.each do |review|%>
-            <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
-        <%end%>
-    </ul>
-
-    <h3>System Lists:</h3>
-    <%@user.game_lists.each do |system, list|%>
+        <h3>My Systems:</h3>
         <ul>
-            <li><%="#{system} Games:"%>
-                <ul>
-                    <%list.each do |game|%>
-                        <li><%=game%></li>
-                    <%end%>
-                </ul>
-            </li>
+            <% @user.systems.each do |sys|%>
+                <li><%= sys.name %></li>
+            <% end%>
         </ul>
-    <%end%>
+        <%=button_to "Add System", new_system_user_path, method: :get%>
+
+
+        <h3>My Reviews:</h3>
+        <ul>
+            <% @user.reviews.each do |review|%>
+                <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
+            <%end%>
+        </ul>
+
+        <h3>System Lists:</h3>
+        <%@user.game_lists.each do |system, list|%>
+            <ul>
+                <li><%="#{system} Games:"%>
+                    <ul>
+                        <%list.each do |game|%>
+                            <li><%=game%></li>
+                        <%end%>
+                    </ul>
+                </li>
+            </ul>
+        <%end%>
+    </div>
 </div>

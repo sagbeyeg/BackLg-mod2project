@@ -2,7 +2,7 @@
     <h1>Edit Profile</h1>
 
     <%=render 'form'%>
-
+    <%=button_to "Add/Edit Systems", new_system_user_path, method: :get%>
     <%=button_to "Back to My Games", user_path(@user), method: :get%>
     <br>
     <br>

@@ -1,12 +1,12 @@
-<h1>Welcome Back! We've missed you!</h1>
-
-<h3>
+<h1>Welcome Back, We've Missed You!</h1>
+<br>
+<h5>
 <% flash.each do |type, msg| %>
   <div>
     <%= msg %>
   </div>
 <% end %>
-</h3>
+</h5>
 
 <div class="form text-center">
   <%= form_for :session do |f| %>

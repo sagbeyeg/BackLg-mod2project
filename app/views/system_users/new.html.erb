@@ -6,7 +6,7 @@
         <%= f.label "Add a system: " %><br>
         <%= f.collection_select :system_id, System.all, :id, :name, {:multiple => true} %><br>
 
-        <%= f.submit %>
+        <%= f.submit "Add system(s)" %>
     <% end %>
 </div>
 
