@@ -8,7 +8,7 @@
     <div class="form">
     <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
         <% game_lists = @user.game_lists.map{|list,games| list}%>
-        <%= select_tag "game_list", options_for_select(game_lists)%>
+        <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%>
         <%= hidden_field_tag "id", @user.id%>
         <%= submit_tag "Filter"%>
     <% end %>
