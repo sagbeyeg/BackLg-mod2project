@@ -1,7 +1,12 @@
-<h1>Select your Platforms</h1>
-
-<div class="form">
+<h1>Add a Game System</h1>
+<br>
+<br>
+<div class="form text-center">
+    <%if flash[:errors]%>
+        <p class="text-danger"><%=flash[:errors]%></p>
+    <%end%>
     <%= form_for @system_user do |f| %>
+        <%= f.collection_select :system_id, System.all, :id, :name %><br>
 
         <%= f.label "Add a system: " %><br>
         <%= f.collection_select :system_id, System.all, :id, :name, {:multiple => true} %><br>

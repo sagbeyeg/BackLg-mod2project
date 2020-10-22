@@ -33,6 +33,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to user_path(@review.user)
+  end
+
   private
 
   def find_review
@@ -40,11 +46,11 @@ class ReviewsController < ApplicationController
   end
 
   def review_params_new
-    params.permit(:game_id).merge(rating: 0)
+    params.permit(:game_id).merge(rating: 0, completion_status: "Want")
   end
 
   def review_params_edit
-    params.require(:review).permit(:user_id, :game_id, :title, :description, :rating)
+    params.require(:review).permit(:user_id, :game_id, :title, :description, :rating, :completion_status)
   end
 
 end

@@ -5,6 +5,7 @@ ruby '2.6.1'
 gem 'pry'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'popper_js', '~> 1.9', '>= 1.9.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
@@ -25,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client'
 gem 'json'
+gem 'figaro'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

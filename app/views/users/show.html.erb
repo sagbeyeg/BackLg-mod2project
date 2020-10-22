@@ -19,17 +19,31 @@ function closeNav() {
 }
 </script>
 
-<div id="main">
+<div id="main">    
     <div class="text-center">
         <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Games"%></h1>
         <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
+    </div>
 
-        <h3>My Games:</h3>
+    <h3>My Games:</h3>
 
-            
-        <div class="container my-4">
+    <div class="form">
+    <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
+        <% game_lists = @user.game_lists.map{|list,games| list}%>
+        <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%>
+        <%= hidden_field_tag "id", @user.id%>
+        <%= submit_tag "Filter"%>
+    <% end %>
+    <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
+    </div>
+
+    <%if params[:game_list]%>
+        <p><%= params[:game_list]%> Games</p>
+    <%end%>
+
+    <div class="container my-4">
         <div class="row">
-            <% @user.games.each do |game|%>
+            <% @user_games.each do |game|%>
                     <div class="col-lg-4 col-md-12 mb-4">
                         <%= image_tag  "#{game.image_url}" %>
                         <%=link_to  "#{game.name}", game_path(game) %>
@@ -37,37 +51,36 @@ function closeNav() {
                     </div>
             <% end %>
         </div>
-        </div>
-                
-        
+    </div>
+            
+    <h3>My Systems:</h3>
 
-        <h3>My Systems:</h3>
-        <ul>
+    <div class="container my-4">
+        <div class="row">
             <% @user.systems.each do |sys|%>
-                <li><%= sys.name %></li>
+                <div class="col-md-3" style="margin-bottom:15px;">
+                    <div id="sys_card"class="card h-100 bg-dark text-white">
+                        <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
+                        <div class="card-img-overlay align-bottom">
+                            <%= link_to  sys.name, system_path(sys) %>
+                        </div>
+                    </div>
+                </div>
             <% end%>
-        </ul>
-        <%=button_to "Add System", new_system_user_path, method: :get%>
-
+        </div>
+    </div>
 
         <h3>My Reviews:</h3>
         <ul>
             <% @user.reviews.each do |review|%>
-                <li><%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%></li>
+                <% if review.title != nil && review.description != nil%>
+                    <%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%>
+                <% end %>
             <%end%>
+
         </ul>
 
-        <h3>System Lists:</h3>
-        <%@user.game_lists.each do |system, list|%>
-            <ul>
-                <li><%="#{system} Games:"%>
-                    <ul>
-                        <%list.each do |game|%>
-                            <li><%=game%></li>
-                        <%end%>
-                    </ul>
-                </li>
-            </ul>
-        <%end%>
+        
     </div>
 </div>
+>>>>>>> d75bdd3259291e365d1283088e524c3fa1b8e7e9
