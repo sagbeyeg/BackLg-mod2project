@@ -1,15 +1,16 @@
 
-<div class="home_title">
+<div class="text-center">
   <h1>B@ckLg is a Video Game Cataloging App</h1>
 </div>
-
-<div class="home_description">
+<br>
+<div class="text-center">
   <h3>
     With access to over 400,000 thousand games,
-    B@ckLg is your one stop shop for your game cataloging needs
+    B@ckLg is your one stop shop <br>for all your game cataloging needs!
   </h3>
 </div>
-
+<br>
+<br>
   <div class="container my-4">
     <div class="row">
         <% Game.all.sample(3).each do |game|%>
@@ -30,7 +31,7 @@
     </div>
   </div>
 <br><br>
-  <div class="home_button">
+  <div class="text-center">
     <% if @current_user != nil %>
       <%= button_to "View More Games", games_path, method: :get%>
     <% else %>

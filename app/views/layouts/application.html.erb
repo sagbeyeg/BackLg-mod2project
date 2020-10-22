@@ -19,6 +19,30 @@
 
 
   <nav id="home_page"class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <% if @current_user %>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="<%= root_path %>">Home</a>
+        <a href="<%= edit_user_path(@current_user) %>">Edit Profile</a>
+        <a href= "<%= new_system_user_path %>">Edit Systems</a>
+        <a href="<%= games_path %>">Add Game</a>
+      </div>
+
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+      <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+
+      /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+      </script>
+      <br>
+    <% end %>
       <a id="logo"class="navbar-brand" href=<%= root_path %>>
         <%= image_tag  "game-controller.png" %>
       </a>
@@ -47,7 +71,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" rel="nofollow" data-method="delete" href="/logout">Logout<span class="sr-only">(current)</span></a>
+              <a class="nav-link" rel="nofollow" data-method="get" href="/logout">Logout<span class="sr-only">(current)</span></a>
             </li>
           <% else %>
             <li class="nav-item">
