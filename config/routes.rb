@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :games
   resources :users
 
-  delete '/logout', to: 'sessions#logout', as: 'logout'
+  get '/logout', to: 'sessions#logout', as: 'logout'
 
   root to: 'application#home'
 
