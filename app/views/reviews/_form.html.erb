@@ -5,15 +5,6 @@
 <%end%>
 <div class="form">
   <%= form_for @review do |f| %>
-<<<<<<< HEAD
-      <p>For: <%= @review.game.name %></p>
-      <%=f.hidden_field :game_id, :value => @review.game_id%>
-      <%=f.hidden_field :user_id, :value => session[:user_id]%>
-      <p> Rating: <%= f.number_field :rating %></p>
-      <p>Title: <%= f.text_field :title %></p>
-      <p>Description: <%= f.text_area :description %></p>
-      <%= f.submit %>
-=======
     <p>
       For: <%= @review.game.name %>
     </p>
@@ -37,6 +28,5 @@
     </p>
 
     <%= f.submit %>
->>>>>>> billy
   <% end %>
 </div>

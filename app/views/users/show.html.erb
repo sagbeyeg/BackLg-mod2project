@@ -55,17 +55,18 @@
         </div>
     </div>
 
-        <h3>My Reviews:</h3>
-        <ul>
-            <% @user.reviews.each do |review|%>
-                <% if review.title != nil && review.description != nil%>
-                    <%= link_to "#{review.game.name} - #{review.title} - #{review.rating}", review_path(review)%>
-                <% end %>
-            <%end%>
-
-        </ul>
-
-        
+    <h3 class="text-center">My Reviews</h3>
+    <% @user.reviews.each do |review|%>
+        <% if review.title != nil && review.description != nil%>
+            <div class="card review_card shadow" style="width: 25rem">
+                <div class="card-body">
+                    <h5 class="card-title"><%= review.game.name %></h5>
+                    <hr>
+                    <h6 class="card-subtitle mb-2 text"><%= review.title %></h6>
+                    <p class="card-text"><%= review.description %></p>
+                </div>
+            </div>
+        <% end %>
+    <% end%>
     </div>
 </div>
-
