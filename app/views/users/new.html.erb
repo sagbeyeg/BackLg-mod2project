@@ -1,9 +1,12 @@
-<h1>Create Profile</h1>
+<div class="text-center">
+    <h1>Create Profile</h1>
 
-<%if flash[:my_errors]%>
-    <%flash[:my_errors].each do |error|%>
-        <p><%=error%></p>
+    <%if flash[:my_errors]%>
+        <%flash[:my_errors].each do |error|%>
+            <p><%=error%></p>
+        <%end%>
     <%end%>
-<%end%>
 
-<%=render 'form'%>
+    <%=render 'form'%>
+
+</div>

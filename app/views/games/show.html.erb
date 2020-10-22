@@ -1,17 +1,27 @@
-<h2><%= @game.name %> (<%= @game.rating %>) </h2>
+
+<div class="text-center">
+  <h2><%= @game.name %> (<%= @game.rating %>) </h2>
+        
+      <p>Genre: <%= @game.genre %></p>
+      <p>ESRB Rating: <%= @game.esrb_rating %></p>
+      <p><% @game.rating_count %></p>
       
-    <p>Genre: <%= @game.genre %></p>
-    <p>ESRB Rating: <%= @game.esrb_rating %></p>
-    <p><% @game.rating_count %></p>
-    <p><%= image_tag  @game.image_url %></p>
+      <div class="game_img_display">
+        <%= image_tag  @game.image_url %>
+      </div>
+</div>
+
+    
 
 
-
-  <%= form_tag(reviews_path) do %>
-    <%=hidden_field_tag :user_id, session[:user_id]%>
-    <%=hidden_field_tag :game_id, @game.id%>
-    <%=hidden_field_tag :rating, 0%>
-    <%=hidden_field_tag :title, " "%>
-    <%=hidden_field_tag :description, " "%>
-    <%= submit_tag "Add Game" %>
-  <% end %>
+  <div class="text-center">
+    <%= form_tag(reviews_path) do %>
+      <%=hidden_field_tag :user_id, session[:user_id]%>
+      <%=hidden_field_tag :game_id, @game.id%>
+      <%=hidden_field_tag :rating, 0%>
+      <%=hidden_field_tag :title, " "%>
+      <%=hidden_field_tag :description, " "%>
+      <%= submit_tag "Add Game" %>
+    <% end %>
+  </div>
+  

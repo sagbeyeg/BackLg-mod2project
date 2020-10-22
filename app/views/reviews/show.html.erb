@@ -2,11 +2,15 @@
 
 <ul>
     <li><%="Rating: #{@review.rating}"%></li>
-    <li><%=@review.title%></li>
-    <li><%=@review.description%></li>
+    <li>Title: <%=@review.title%></li>
+    <li>Description: <%=@review.description%></li>
 </ul>
 
-<%= form_tag( 'path' , remote: true) do |f| %>
+<%
+=begin%>
+ <%= form_tag( 'path' , remote: true) do |f| %>
 <%= hidden_field_tag (:id_name, "value") %>
-<% end %>
+<% end %> 
+<%
+=end%>
 
