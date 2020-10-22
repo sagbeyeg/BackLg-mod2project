@@ -10,7 +10,7 @@
     </p>
 
     <p>
-      Completion Status:<%= f.select :completion_status, options_for_select(["Want", "Playing", "Completed", "Abandoned"], @review.completion_status) %>
+      Completion Status:<%= f.select :completion_status, options_for_select(["Completed", "Want", "Playing", "Abandoned"], @review.completion_status) %>
     </p>
 
     <%=f.hidden_field :game_id, :value => @review.game_id%>
