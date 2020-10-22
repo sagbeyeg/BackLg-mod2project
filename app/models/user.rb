@@ -27,4 +27,15 @@ class User < ApplicationRecord
         end
         game_lists
     end
+
+    def filter_games(game_list)
+        game_lists = self.game_lists
+        filtered_games = []
+        game_lists[game_list].each do |game|
+            game_instance = Game.find_by(name: game)
+            filtered_games << game_instance
+        end
+        filtered_games
+    end
+
 end
