@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_10_22_152501) do
-=======
-ActiveRecord::Schema.define(version: 2020_10_22_152408) do
->>>>>>> billy
 
   create_table "game_systems", force: :cascade do |t|
     t.integer "game_id"
