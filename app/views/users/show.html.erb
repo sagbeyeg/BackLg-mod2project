@@ -25,8 +25,6 @@ function closeNav() {
         <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
     </div>
 
-    <h3>My Games:</h3>
-
     <div class="form">
     <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
         <% game_lists = @user.game_lists.map{|list,games| list}%>
@@ -38,7 +36,7 @@ function closeNav() {
     </div>
 
     <%if params[:game_list]%>
-        <p><%= params[:game_list]%> Games</p>
+        <h3><%= params[:game_list]%> Games:</h3>
     <%end%>
 
     <div class="container my-4">
@@ -48,6 +46,7 @@ function closeNav() {
                         <%= image_tag  "#{game.image_url}" %>
                         <%=link_to  "#{game.name}", game_path(game) %>
                         <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
+                        <%= button_to "Remove Game", review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :delete%>
                     </div>
             <% end %>
         </div>
@@ -58,13 +57,15 @@ function closeNav() {
     <div class="container my-4">
         <div class="row">
             <% @user.systems.each do |sys|%>
-                <div class="col-md-3" style="margin-bottom:15px;">
-                    <div id="sys_card"class="card h-100 bg-dark text-white">
+                <div class="col-lg-4 col-md-12 mb-4" style="margin-bottom:15px;">
+                    <div id="sys_card"class="card h-50 bg-dark text-white">
                         <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
                         <div class="card-img-overlay align-bottom">
                             <%= link_to  sys.name, system_path(sys) %>
                         </div>
                     </div>
+                <%= button_to "View All Games", system_path(sys), method: :get%>
+                <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
                 </div>
             <% end%>
         </div>
@@ -83,4 +84,3 @@ function closeNav() {
         
     </div>
 </div>
->>>>>>> d75bdd3259291e365d1283088e524c3fa1b8e7e9
