@@ -22,12 +22,9 @@ function closeNav() {
 <div id="main">    
     <div class="text-center">
         <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Games"%></h1>
-        <%=button_to "Edit Profile", edit_user_path(@user), method: :get%>
     </div>
 
-    <h3>My Games:</h3>
-
-    <div class="form">
+    <div class="form" style="margin-bottom: 45px;">
     <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
         <% game_lists = @user.game_lists.map{|list,games| list}%>
         <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%>
@@ -41,28 +38,38 @@ function closeNav() {
         <p><%= params[:game_list]%> Games</p>
     <%end%>
 
-    <div class="container my-4">
-        <div class="row">
-            <% @user_games.each do |game|%>
-                    <div class="col-lg-4 col-md-12 mb-4">
-                        <%= image_tag  "#{game.image_url}" %>
-                        <%=link_to  "#{game.name}", game_path(game) %>
-                        <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
-                    </div>
-            <% end %>
-        </div>
-    </div>
-            
-    <h3>My Systems:</h3>
 
-    <div class="container my-4">
+    <div class="container my-4" style="margin-bottom:45px;">
+    <div class="row">
+        <% @user.games.each do |game|%>
+            <div class="col-md-4" style="margin-bottom: 15px;">
+                <div class="card h-100 shadow-lg">
+                    <img src= <%= game.image_url %> class="card-img-top">
+                    <div class="card-body bg-dark text-light">
+                        <h5 class="text-center sys_link"><%= link_to "#{game.name}", game_path(game) %></h5>
+                        <br>
+                        <li class="card-text"><strong>Rating:</strong> <%= game.rating %></li>
+                        <li class="card-text"><strong>Genre:</strong> <%= game.genre %></li>
+                        <li class="card-text"><strong>Number of Ratings:</strong> <%= game.rating_count %></li>
+                        <br>
+                        <a href=<%= edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)) %> class="btn btn-primary">Add or Edit Review</a>
+                    </div>
+                </div>
+            </div>
+        <% end%>
+    </div>
+</div>
+
+
+    <div class="container" style="margin-bottom: 45px;">
+        <h3>My Systems</h3>
         <div class="row">
             <% @user.systems.each do |sys|%>
-                <div class="col-md-3" style="margin-bottom:15px;">
-                    <div id="sys_card"class="card h-100 bg-dark text-white">
+                <div class="col-md-3" style="margin-bottom:15px;margin-top:15px;">
+                    <div id="sys_card"class="card shadow bg-dark">
                         <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
-                        <div class="card-img-overlay align-bottom">
-                            <%= link_to  sys.name, system_path(sys) %>
+                        <div class="card-img-overlay text-center">
+                            <a class="sys_link" href=<%= system_path(sys) %>> <%= sys.name%> </a>
                         </div>
                     </div>
                 </div>
@@ -71,9 +78,9 @@ function closeNav() {
     </div>
 
     
-    <h3 class="text-center">My Reviews</h3>
-    <div class="align-items-center">
-        
+    
+    <div class="container" >
+        <h3>My Reviews</h3>
         <% @user.reviews.each do |review|%>
                 <% if review.title != nil && review.description != nil%>
                     <div class="card review_card shadow" style="width: 45rem;">
@@ -84,10 +91,8 @@ function closeNav() {
                             <p class="card-text"><%= review.description %></p>
                         </div>
                     </div>
-                </div>
-            <% end %>
-        <% end%>
+                <% end %>
+            <% end%>
+        </div>
     </div>
-     
-    
 </div>
