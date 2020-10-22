@@ -10,5 +10,8 @@
   <%= form_tag(reviews_path) do %>
     <%=hidden_field_tag :user_id, session[:user_id]%>
     <%=hidden_field_tag :game_id, @game.id%>
+    <%=hidden_field_tag :rating, 0%>
+    <%=hidden_field_tag :title, " "%>
+    <%=hidden_field_tag :description, " "%>
     <%= submit_tag "Add Game" %>
   <% end %>

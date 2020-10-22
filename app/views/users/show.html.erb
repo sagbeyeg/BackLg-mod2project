@@ -11,7 +11,7 @@
             <div class="col-lg-4 col-md-12 mb-4">
                 <%= image_tag  "#{game.image_url}" %>
                 <%=link_to  "#{game.name}", game_path(game) %>
-                <p>Rating: <%= game.rating %></p>
+                <%= button_to "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :get%>
             </div>
     <% end %>
   </div>
