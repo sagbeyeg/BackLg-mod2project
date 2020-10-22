@@ -13,7 +13,9 @@
         <%# end %>
 <% end %>
 
-<div class="container my-4">
+<%
+=begin%>
+ <div class="container my-4">
   <div class="row">
     <% @games.each do |game|%>
             <div id= "game_card" class="col-lg-4 col-md-12 mb-4">
@@ -22,7 +24,29 @@
             </div>
     <% end %>
   </div>
+</div> 
+<%
+=end%>
+<div class="container my-4">
+    <div class="row">
+        <% @games.each do |game|%>
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <img src= <%= game.image_url %> class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="text-center" class="card-text"><%= link_to "#{game.name}", game_path(game) %></h5>
+                        <br>
+                        <li class="card-text">Rating: <%= game.rating %></li>
+                        <li class="card-text">Genre: <%= game.genre %></li>
+                        <li class="card-text">Number of Ratings: <%= game.rating_count %></li>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        <% end%>
+    </div>
 </div>
+
 
 
 
