@@ -63,9 +63,9 @@ User.all.each do |user|
 end
 
 # review seeds
-# User.all.each do |user|
-#     games = Game.all.sample(5)
-#     games.each do |game| 
-#         Review.create(game_id: game.id, user_id: user.id, rating: (0..5).to_a.sample, title: "my title", description: "my description", completion_status: "Complete")
-#     end
-# end
+User.all.each do |user|
+    games = Game.all.sample(5)
+    games.each do |game| 
+        Review.create(game_id: game.id, user_id: user.id, rating: (0..5).to_a.sample, title: "my title", description: "my description", completion_status: "Complete")
+    end
+end
