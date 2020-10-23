@@ -1,41 +1,23 @@
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="<%= root_path %>">Home</a>
-  <a href="<%= edit_user_path %>">Edit Profile</a>
-  <a href="<%= games_path %>">Add Game</a>
-</div>
-
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}
-</script>
-
 <div id="main">    
     <div class="text-center">
-        <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Games"%></h1>
+        <h1>My Profile</h1>
     </div>
 
-    <div class="form" style="margin-bottom: 45px; margin-top:25px;">
+    <div class="show-form" style="margin-bottom: 45px; margin-top:25px;">
         <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
             <% game_lists = @user.game_lists.map{|list,games| list}%>
             <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%><br>
             <%= hidden_field_tag "id", @user.id%><br>
-            <%= submit_tag "Filter"%>
+            <div class="show-button">
+                <%= submit_tag "Filter"%>
+                <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
+            </div>
         <% end %>
-        <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
+       
     </div>
 
     <%if params[:game_list]%>
-        <p><%= params[:game_list]%> Games</p>
+        <h3 class="text-center"><%= params[:game_list]%> Games:</h3>
     <%end%>
 
 
@@ -53,7 +35,10 @@ function closeNav() {
                         <li class="card-text"><strong>Genre:</strong> <%= game.genre %></li>
                         <li class="card-text"><strong>Number of Ratings:</strong> <%= game.rating_count %></li>
                         <br>
-                        <a href=<%= edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)) %> class="btn btn-primary">Add or Edit Review</a>
+                        <div class="show-button">
+                            <%= button_to  "Add/Edit Review", edit_review_path(Review.find_by(user_id: @user.id, game_id: game.id)) %>
+                            <%= button_to  "Remove Game", review_path(Review.find_by(user_id: @user.id, game_id: game.id)), method: :delete %>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,16 +52,13 @@ function closeNav() {
     <div class="row">
         <% @user.systems.each do |sys|%>
             <div class="col-md-5" style="margin-bottom:15px;margin-top;15px">
-                <div id="sys_card"class="card shadow bg-dark">
+                <div id="sys_card"class="card shadow">
                     <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
-                    <div class="card-img-overlay text-center">
-                        <h3><a class="sys_link" href=<%= system_path(sys) %>> <%= sys.name%> </a></h3>
-                        <%= button_to "View All Games", system_path(sys), method: :get%>
-                        <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
-                    </div>
-                    <div class="show-button">
-                        <%= button_to "View All Games", system_path(sys), method: :get%>
-                        <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
+                    <div class="card text-center bg-dark">
+                        <div class="show-button ">
+                            <%= button_to sys.name, system_path(sys), method: :get%>
+                            <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete %>
+                        </div>
                     </div>
                 </div>
             </div>

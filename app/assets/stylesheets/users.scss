@@ -9,7 +9,7 @@ img {
 }
 
 .sys_link {
-  color: white;
+  color: black;
   font-size: x-large;
 }
 
@@ -61,7 +61,13 @@ img {
 }
 
 #sys_pic{
-    opacity:0.35;
+    opacity:0.75;
+}
+
+.sys_name {
+  background-color: rgb(114, 76, 175);
+  color: white;
+
 }
 
 .show-form {
@@ -76,6 +82,8 @@ img {
 }
 
 .show-button {
+  text-align: center;
+  line-height: 0.2cm;
   
 }
 
