@@ -23,7 +23,10 @@
   } */
 
   /* Styling for app form text field*/
- 
+.card-body {
+  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
+}
   #logo {
     height: 70px;
     width: 70px;

@@ -1,19 +1,27 @@
 
-<div class="text-center">
-  <h2><%= @game.name %> (<%= @game.rating %>) </h2>
-        
-      <p>Genre: <%= @game.genre %></p>
-      <p><% @game.rating_count %></p>
-      
-      <div class="game_img_display">
-        <%= image_tag  @game.image_url %>
+<div class="container">
+  <div class="row justify-content-center ">
+    <div class="card shadow" style="width: 38rem;margin:5rem;">
+      <img class="card-img-top" src=<%= @game.image_url %> alt="game image">
+      <div class="card-body bg-dark text-light">
+        <h2 class="card-title" style="padding-top:0px;"><%= @game.name %></h2>
+        <hr style="border: 1px solid blanchedalmond;">
+        <p class="card-text">Rating: <%= @game.rating %></p>
+        <p class="card-text">Genre: <%= @game.genre%></p>
+        <p class="card-text">Number of Ratings: <%= @game.rating_count %></p>
+        <p>Available Systems:
+          <ul>
+            <% @game.systems.each do |sys|%>
+              <li><%= sys.name%></li>
+            <% end %>
+          </ul>
+        </p>
       </div>
+    </div>
+  </div>
 </div>
 
-    
-
-
-  <div class="text-center">
+<div class="text-center">
     <%= form_tag(reviews_path) do %>
       <%=hidden_field_tag :user_id, session[:user_id]%>
       <%=hidden_field_tag :game_id, @game.id%>
@@ -23,4 +31,9 @@
       <%= submit_tag "Add Game" %>
     <% end %>
   </div>
+
+
+    
+
+
   

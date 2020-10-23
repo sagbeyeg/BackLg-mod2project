@@ -33,7 +33,7 @@ url = "https://api.rawg.io/api/games?key=#{key}&page-1"
 response = RestClient.get(url)
 data = JSON.parse(response)
 
-data["results"][0..9].each do |game|
+data["results"][0..100].each do |game|
     name = game["name"]
     rating = game["rating"]
     esrb_rating = "everyone"
