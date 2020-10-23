@@ -37,7 +37,7 @@
 <br>
 
 <div class="container" >
-        <h3>Reviews</h3>
+        <h3>Reviews<%=" (#{@game.reviews.count})"%></h3>
         <% @game.reviews.each do |review|%>
                 <% if review.title != nil && review.description != nil%>
                     <div class="card review_card shadow" style="width: 45rem;">

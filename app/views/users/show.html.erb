@@ -9,7 +9,7 @@
             <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%><br>
             <%= hidden_field_tag "id", @user.id%><br>
             <div class="show-button">
-                <%= submit_tag "Filter"%>
+                <%= submit_tag "Filter by System"%>
                 <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
             </div>
         <% end %>

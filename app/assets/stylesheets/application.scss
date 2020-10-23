@@ -64,16 +64,23 @@
     resize: none;
   }
 
+  #delete-button {
+    background-color: red;
+    color: white;
+  }
+
   /* Styling for all buttons on hover*/
   input[type=submit]:hover {
     background-color: #5345a0;
   }
+
 
   /* Styling for all buttons */
   input[type=submit] {
     background-color: #724caf;
     color: white;
   }
+
 
  .form{
     width: 50%;
