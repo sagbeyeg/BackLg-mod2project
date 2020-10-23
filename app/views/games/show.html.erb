@@ -36,15 +36,17 @@
 <br>
 <br>
 
-<div class="container text-center" >
+<div class="container" >
         <h3>Reviews</h3>
         <% @game.reviews.each do |review|%>
                 <% if review.title != nil && review.description != nil%>
                     <div class="card review_card shadow" style="width: 45rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><%= review.game.name %></h5>
+                            <h3 class="card-title"><%= review.game.name %></h3>
+                            <h4 class="card-subtitle mb-2 text-left">Rating: <%= review.rating.to_f %></h4>
+                            <h6>By: <%= review.user.name %></h6>
                             <hr>
-                            <h6 class="card-subtitle mb-2 text"><%= review.title %></h6>
+                            <b><h4 class="card-subtitle mb-2 text"><%= review.title %></h4></b>
                             <p class="card-text"><%= review.description %></p>
                         </div>
                     </div>

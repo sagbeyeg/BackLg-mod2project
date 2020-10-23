@@ -5,11 +5,14 @@
 
 
 
-<%if flash[:errors]%>
-    <%flash[:errors].each do |error|%>
-        <p><%=error%></p>
+<div class="text-center text-danger">
+    <%if flash[:errors]%>
+        <%flash[:errors].each do |error|%>
+            <p><%=error%></p>
+        <%end%>
     <%end%>
-<%end%>
+</div>
+
 
 <div id="search_form">
     <%= form_tag(games_path, :method => "get") do %>

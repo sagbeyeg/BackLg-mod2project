@@ -69,15 +69,14 @@
                 <a class="dropdown-item" href=<%= new_system_user_path %>>Add a System</a>
               </div>
             </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" rel="nofollow" data-method="get" href="/logout">Logout<span class="sr-only">(current)</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" rel="nofollow" data-method="get" href="/logout">Logout<span class="sr-only">(current)</span></a>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href=<%= login_path %>>Already a member? Log In</a>
               </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href=<%= new_user_path %>>Sign Up!</a>
             </li>
           <% end%>
