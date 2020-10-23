@@ -12,7 +12,7 @@ class Game < ApplicationRecord
         response = RestClient.get(url)
         data = JSON.parse(response)
         games = []
-        data["results"][1..9].each do |g|
+        data["results"][1..15].each do |g|
             attributes = {}
             attributes["name"] = g["name"] if g["name"]
             attributes["rating"] = g["rating"] if g["rating"]

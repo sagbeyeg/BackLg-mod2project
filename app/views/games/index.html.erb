@@ -24,8 +24,8 @@
 <div class="container my-4">
     <div class="row">
         <% @games.each do |game|%>
-            <div class="col-md-4" style="margin-bottom: 15px; text-align:center;">
-                <div class="card h-100 shadow">
+            <div class="col-md-4" style="margin-bottom: 15px;">
+                <div class="card shadow">
                     <img src= <%= game.image_url %> class="card-img-top">
                     <div class="card-body bg-dark text-light">
                         <h5 class="text-center" class="card-text"><%= link_to "#{game.name}", game_path(game) %></h5>
