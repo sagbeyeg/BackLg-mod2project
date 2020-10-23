@@ -42,7 +42,7 @@
                 <% if review.title != nil && review.description != nil%>
                     <div class="card review_card shadow" style="width: 45rem;">
                         <div class="card-body">
-                            <h3 class="card-title"><%= review.game.name %></h3>
+                            <h3 class="card-title"><%= link_to  review.game.name, review_path(review) %></h3>
                             <h4 class="card-subtitle mb-2 text-left">Rating: <%= review.rating.to_f %></h4>
                             <h6>By: <%= review.user.name %></h6>
                             <hr>

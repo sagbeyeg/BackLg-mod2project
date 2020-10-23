@@ -29,11 +29,12 @@
     </div>
   </div>
 <br><br>
-  <div class="text-center">
-    <% if @current_user != nil %>
-      <%= button_to "View More Games", games_path, method: :get%>
-    <% else %>
-      <h3>What are you waiting for?</h3>
-      <%= button_to "Signup", new_user_path, method: :get %>
-    <% end %>
-  </div>
+
+<div class="text-center">
+  <% if @current_user != nil %>
+    <%= button_to "View More Games", games_path, method: :get%>
+  <% else %>
+    <h3>What are you waiting for?</h3>
+    <%= button_to "Signup", new_user_path, method: :get %>
+  <% end %>
+</div>

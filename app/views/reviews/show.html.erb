@@ -1,9 +1,16 @@
-<h1><%= @review.game.name%></h1>
-
-<ul>
-    <li><%="Rating: #{@review.rating}"%></li>
-    <li>Title: <%=@review.title%></li>
-    <li>Description: <%=@review.description%></li>
-</ul>
-
+<div class="container" >
+    <% if @review.title != nil && @review.description != nil%>
+        <div class="card review_card shadow" style="width: 45rem;">
+            <div class="card-body">
+                <h3 class="card-title"><%= @review.game.name %></h3>
+                <h4 class="card-subtitle mb-2 text-left">Rating: <%= @review.rating.to_f %></h4>
+                <h6>By: <%= @review.user.name %></h6>
+                <hr>
+                <b><h4 class="card-subtitle mb-2 text"><%= @review.title %></h4></b>
+                <p class="card-text"><%= @review.description %></p>
+                <%= button_to  "Edit Review", edit_review_path(@review), method: :get %>
+            </div>
+        </div>
+    <% end %>
+</div>
 
