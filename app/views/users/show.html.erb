@@ -24,14 +24,14 @@ function closeNav() {
         <h1><%= "#{@user.name.split.map(&:capitalize).join(' ')}'s Games"%></h1>
     </div>
 
-    <div class="form" style="margin-bottom: 45px;">
-    <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
-        <% game_lists = @user.game_lists.map{|list,games| list}%>
-        <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%>
-        <%= hidden_field_tag "id", @user.id%>
-        <%= submit_tag "Filter"%>
-    <% end %>
-    <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
+    <div class="form" style="margin-bottom: 45px; margin-top:25px;">
+        <%= form_tag( "/users/#{@user.id}", :method => :get )  do %>
+            <% game_lists = @user.game_lists.map{|list,games| list}%>
+            <%= select_tag "game_list", options_for_select(game_lists), prompt: "Select System"%><br>
+            <%= hidden_field_tag "id", @user.id%><br>
+            <%= submit_tag "Filter"%>
+        <% end %>
+        <%= button_to "Clear Filter", user_path(@user), id: @user.id, method: :get%>
     </div>
 
     <%if params[:game_list]%>
@@ -41,13 +41,14 @@ function closeNav() {
 
     <div class="container my-4" style="margin-bottom:45px;">
     <div class="row">
-        <% @user.games.each do |game|%>
+        <% @user_games.each do |game|%>
             <div class="col-md-4" style="margin-bottom: 15px;">
                 <div class="card h-100 shadow-lg">
                     <img src= <%= game.image_url %> class="card-img-top">
                     <div class="card-body bg-dark text-light">
                         <h5 class="text-center sys_link"><%= link_to "#{game.name}", game_path(game) %></h5>
                         <br>
+                        <strong><h6><%= Review.find_by(user_id: @user.id, game_id: game.id).completion_status%></h6></strong>
                         <li class="card-text"><strong>Rating:</strong> <%= game.rating %></li>
                         <li class="card-text"><strong>Genre:</strong> <%= game.genre %></li>
                         <li class="card-text"><strong>Number of Ratings:</strong> <%= game.rating_count %></li>
@@ -61,23 +62,24 @@ function closeNav() {
 </div>
 
 
-    <div class="container" style="margin-bottom: 45px;">
-        <h3>My Systems</h3>
-        <div class="row">
-            <% @user.systems.each do |sys|%>
-                <div class="col-md-3" style="margin-bottom:15px;margin-top;15px">
-                    <div id="sys_card"class="card shadow bg-dark">
-                        <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
-                        <div class="card-img-overlay text-center">
-                            <a class="sys_link" href=<%= system_path(sys) %>> <%= sys.name%> </a>
-                        </div>
+<div class="container" style="margin-bottom: 45px;">
+    <h3>My Systems</h3>
+    <div class="row">
+        <% @user.systems.each do |sys|%>
+            <div class="col-md-5" style="margin-bottom:15px;margin-top;15px">
+                <div id="sys_card"class="card shadow bg-dark">
+                    <img id="sys_pic"class="card-img" src=<%= sys.image_url %> alt="Card image">
+                    <div class="card-img-overlay text-center">
+                        <h3><a class="sys_link" href=<%= system_path(sys) %>> <%= sys.name%> </a></h3>
+                        <%= button_to "View All Games", system_path(sys), method: :get%>
+                        <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
                     </div>
                 </div>
-            <% end%>
-        </div>
+            </div>
+        <% end%>
     </div>
+</div>
 
-    
     
     <div class="container" >
         <h3>My Reviews</h3>
