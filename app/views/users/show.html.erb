@@ -51,8 +51,10 @@
                             <%= link_to  sys.name, system_path(sys) %>
                         </div>
                     </div>
-                <%= button_to "View All Games", system_path(sys), method: :get%>
-                <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
+                    <div class="show-button">
+                        <%= button_to "View All Games", system_path(sys), method: :get%>
+                        <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
+                    </div>
                 </div>
             <% end%>
         </div>
