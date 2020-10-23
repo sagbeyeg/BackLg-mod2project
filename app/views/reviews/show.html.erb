@@ -8,7 +8,9 @@
                 <hr>
                 <b><h4 class="card-subtitle mb-2 text"><%= @review.title %></h4></b>
                 <p class="card-text"><%= @review.description %></p>
-                <%= button_to  "Edit Review", edit_review_path(@review), method: :get %>
+                <% if @review.user == @current_user%>
+                    <%= button_to  "Edit Review", edit_review_path(@review), method: :get %>
+                <% end%>
             </div>
         </div>
     <% end %>
