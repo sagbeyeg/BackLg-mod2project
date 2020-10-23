@@ -74,6 +74,10 @@ function closeNav() {
                         <%= button_to "View All Games", system_path(sys), method: :get%>
                         <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
                     </div>
+                    <div class="show-button">
+                        <%= button_to "View All Games", system_path(sys), method: :get%>
+                        <%= button_to "Remove System", system_user_path(SystemUser.find_by(user_id: @user.id, system_id: sys.id)), method: :delete%>
+                    </div>
                 </div>
             </div>
         <% end%>
