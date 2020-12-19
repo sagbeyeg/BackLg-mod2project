@@ -1,7 +1,7 @@
 # B@CKLG
 
 ## DESCRIPTION
-- B@cklg is a video game cataloguing application that allows users to create a list of, write reviews for, and rate video games.  
+- B@cklg is a video game cataloging application that allows users to create a list of, write reviews for, and rate video games.  
 - This Ruby on Rails application is our final project for Phase (Mod) 2 of Flatiron School's Software Engineering Bootcamp. 
 - It calls on and is heavily dependent on the RAWG video game API. 
 - As a school project, the application is solely meant to demonstrate our RoR skills and is not monetized in anyway.
